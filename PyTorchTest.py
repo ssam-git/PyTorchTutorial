@@ -65,6 +65,8 @@ y2 = tensor.matmul(tensor.T)
 print(f"y2: {y2} \n")
 
 y3 = torch.rand_like(y1)
+print(f"y3 rand_like: {y3} \n")
+
 torch.matmul(tensor, tensor.T, out=y3)
 print(f"y3: {y3} \n")
 
@@ -76,3 +78,31 @@ z3 = torch.rand_like(tensor)
 torch.mul(tensor, tensor, out=z3)
 
 print(tensor)
+print()
+
+# sum
+agg = tensor.sum()
+agg_item = agg.item()
+print(agg_item, type(agg_item))
+
+print(f"{tensor} \n")
+tensor.add_(5)
+print(tensor)
+
+# tensor to NumPy
+t = torch.ones(5)
+print(f"t: {t}")
+n = t.numpy()
+print(f"n: {n} \n")
+
+t.add_(1)
+print(f"t: {t}")
+print(f"n: {n}")
+
+# NumPy to Tensor
+n = np.ones(5)
+t = torch.from_numpy(n)
+
+np.add(n, 1, out=n)
+print(f"t: {t}")
+print(f"n: {n}")
